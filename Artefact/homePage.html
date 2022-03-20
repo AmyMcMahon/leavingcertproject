@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!--Containing the metadata for the website-->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>AutoHomes</title>
+		<!--Linking the stylesheet and the font to the webpages-->
+		<link rel="stylesheet" href="style.css">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">  
+	</head>
+	<body>
+		<!--Adding in the logo for my website-->
+		<img src="logo.png" width="200px" height="180px" id = "logo" alt="AutoHomes logo">
+		<!--Containes the navigation bar and the title of the webpage-->
+		<div id ="header" style="text-align:center;">
+			<h1>AutoHomes</h1>
+			<a href="homePage.html">Home Page</a>
+			<a href="page2.html">Monitor Your Device</a>
+			<a href="page3.html">Rain Sensor</a>
+			<a href="page4.html">Contact Us</a>
+			<a href="page5.html">Reviews</a>
+		</div><br/>
+		<!--Div containing entire webpage to allow for regular and large text-->
+		<div id="text">
+			<!--Allows the text on the webpage to be made larger and smaller for accessability-->
+			<button id="textChange" onclick="regular()">Regular</button>
+			<button id="textChange" onclick="large()">Large</button><br/>
+			<!--Information about what a smart home is-->
+			<div id="smartHome">
+				<h2>What Is A Smart Home?</h2>
+				<p>A smart home is one where certain items, e.g. lights, fans or blinds, are connected to the
+				internet. They make your life more convienent as you are able to control appliances in your home
+				remotely from your mobile phone through an internet connection. Many devices can also be controlled
+				using voice-control technology.</p><br/>
+			</div>
+			<!--Information about the AutoHomes company and the services provided-->
+			<img src="SmartHome.png" width="320px" id="SmartImage" alt="Smart Homes Image">
+			<br/><br/><div id="aboutUs">
+				<h2>About Us</h2>
+				<p>AutoHomes is a Smart Home Technology company who aims to make Home Automation acessible for all ages and abilities. 
+				We use our extensive knowledge on the latest technologies to provide the most efficient Home Automation systems. Our experienced team
+				will take care of every aspect of your Home Automation, from designing the best system for you to fitting it in your home. We provide many smart home services such as:</p>
+				<ul>
+					<li>Rain Sensors</li>
+					<li>Smart Lights</li>
+					<li>Alarm Systems</li>
+					<li>Smart Fans</li>
+					<li>Smart Blinds</li>
+				</ul>
+			</div>
+			<img src="SmartHome2.png" width="400px" id="SmartImage" alt="Smart Homes Image">
+		</div>
+	</body>
+</html>
+<script>
+	//makes the text larger and smaller
+	function regular(){
+		document.getElementById("text").style.fontSize="16px";
+	}
+	function large(){
+		document.getElementById("text").style.fontSize="30px";
+	}
+</script>

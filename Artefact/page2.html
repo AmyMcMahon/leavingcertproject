@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!--Containing the metadata for the website-->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>AutoHomes</title>
+		<!--Linking the stylesheet and the font to the webpages-->
+		<link rel="stylesheet" href="style.css">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">  
+	</head>
+	<body>
+		<!--Adding in the logo for my website-->
+		<img src="logo.png" width="200px" height="180px" id = "logo" alt="AutoHomes logo">
+		<!--Contains the navigation bar and the title of the webpage-->
+		<div id ="header" style="text-align:center;">
+			<h1>AutoHomes</h1>
+			<a href="homePage.html">Home Page</a>
+			<a href="page2.html">Monitor Your Device</a>
+			<a href="page3.html">Rain Sensor</a>
+			<a href="page4.html">Contact Us</a>
+			<a href="page5.html">Reviews</a>
+		</div> <br/>
+		<!--Div containing entire webpage to allow for regular and large text-->
+		<div id="text">
+		<!--Allows the text on the webpage to be made larger and smaller for accessability-->
+			<button id="textChange" onclick="regular()">Regular</button>
+			<button id="textChange" onclick="large()">Large</button>
+		</div>
+		<!--Describing how to read the graph-->
+		<h3>Rain Sensor Data</h3> <br/> <br/><br/><br/>
+		<table>
+			<tr>
+				<th>Raining</th>
+				<th>Not raining</th>
+			</tr>
+			<tr>
+				<td>Less then 1000</td>
+				<td>Greater than 1000</td>
+			</tr>
+		</table> <br/><br/><br/>
+		<div id="dataArea">
+
+		</div>
+	</body>
+</html>
+<script>
+	//makes the text larger and smaller
+	function regular(){
+		document.getElementById("text").style.fontSize="16px";
+	}
+	function large(){
+		document.getElementById("text").style.fontSize="30px";
+	}
+</script>
+
+
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase.js"> //downloading firebase</script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js">//downloading plotly</script>
+
+<script>
+	//connecting to the database
+	const firebaseConfig = {
+		apiKey: "AIzaSyDEC0YXMQ-az2yJ5eCSBOihZSnnTBhsb90",
+		authDomain: "rain-sensor-468f7.firebaseapp.com",
+		databaseURL: "https://rain-sensor-468f7-default-rtdb.firebaseio.com",
+		projectId: "rain-sensor-468f7",
+		storageBucket: "rain-sensor-468f7.appspot.com",
+		messagingSenderId: "611220734253",
+		appId: "1:611220734253:web:f19905701428e6c1e293a4",
+		measurementId: "G-WTDJ0XB4RD"
+};
+	
+	// Initialize Firebase
+	firebase.initializeApp(firebaseConfig);  
+</script>
+
+<script>
+	//getting the data from the database
+	var rainLevels = [];
+    var myDBRain = firebase.database().ref("/rainSensor/");
+	myDBRain.on("child_added", displayF);
+
+	function displayF(data){
+		var myData = data.val();
+		var rain = parseInt(myData.Rain);
+		rainLevels.push(rain);
+		redrawGraph();
+	};
+
+	//drawing the graph
+	function redrawGraph(){
+		//data
+		var rainData = {
+			y: rainLevels,
+			type: 'scatter',
+			name: "Rain Levels Galway"
+		};
+		//layout
+		var layout = {
+			title: "Rain Sensor Data",
+			xaxis: {title: "time"},
+			yaxis: {title:"rain"}
+		};
+
+		//combine
+		var graphData = [rainData];
+
+		//rainLevels.slice(leftRightForce.length - 50, leftRightForce.length-1);
+
+		//Draw
+		Plotly.newPlot("dataArea", graphData, layout);
+
+	};
+
+</script>

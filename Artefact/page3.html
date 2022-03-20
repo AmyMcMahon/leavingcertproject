@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!--Containing the metadata for the website-->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>AutoHomes</title>
+		<!--Linking the stylesheet and the font to the webpages-->
+		<link rel="stylesheet" href="style.css">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">  
+	</head>
+	<body>
+		<!--Adding in the logo for my website-->
+		<img src="logo.png" width="200px" height="180px" id = "logo" alt="AutoHomes logo">
+		<!--Containes the navigation bar and the title of the webpage-->
+		<div id ="header" style="text-align:center;">
+			<h1>AutoHomes</h1>
+			<a href="homePage.html">Home Page</a>
+			<a href="page2.html">Monitor Your Device</a>
+			<a href="page3.html">Rain Sensor</a>
+			<a href="page4.html">Contact Us</a>
+			<a href="page5.html">Reviews</a>
+		</div> <br/>
+		<!--Div containing entire webpage to allow for regular and laurge text-->
+		<div id="text">
+			<!--Allows the text on the webpage to be made larger and smaller for accessability-->
+			<button id="textChange" onclick="regular()">Regular</button>
+			<button id="textChange" onclick="large()">Large</button><br/><br/><br/><br/><br/>
+			<!--Information about what a rain sensor is and its uses-->
+			<div id="rainBox">
+				<h2>What Is A Rain Sensor?</h2>
+				<p>A Rain Sensor is a device that detects rainfall and can notify you when it begins to rain. The rain board operates as a variable resistor: resistance increase when 
+				the sensor is wet, and resistance decreases when it is dry. This value is then outputed to the Micro:bit device <br/><br/> Rain Sensors have a wide 
+				variety of uses such as automatic irrigation systems and automatic wipers in a car. A Rain Sensor can also be extremely 
+				beneficial if you have washing on the line and are concerned about the rain! It is also useful if you want to track how much water
+				your plants are getting when you are away from home!<br/><br/> AutoHomes aims to provide the highest quailty
+				Rain Sensors to households and businesses all around Ireland. Our Rain Sensors detect rainfall and trigger an alarm so that you are 
+				aware of the rain. The rainfall on your own Rain Sensor can be monitored throghout the day on our website. <br/><br/>The data we collect will be not be stored to ensure
+				there is not risk of a data leak. The data will only be used for its intended purpose. It is important you do not remove the device from the protective casing, as there is a risk the rain could damage the device.
+				</p>
+			</div><br/>
+			<!--adding audio - rain sounds-->
+			<audio controls>
+				<source src="Rain.mp3" />
+			</audio> <br/> <br/> <br/>
+			<!--Gif of rainfall-->
+			<img src="Rain.gif" width="320px" id="gif" alt="Smart Homes Image">
+			<!--Table containing the types of rain sensors sold and their costs-->
+			<div id="priceList">
+				<h2>Price List:</h2>
+				<table border>
+					<tr>
+						<th>Type</th>
+						<th>Price</th>
+					</tr>
+					<tr>
+						<td>Rain Sensor</td>
+						<td>€80</td>
+					</tr>
+					<tr>
+						<td>Rain Sensor and Installment</td>
+						<td>€100</td>
+					</tr>
+					<tr>
+						<td>Automatic Plant Watering Device</td>
+						<td>€150</td>
+					</tr>
+				</table>
+			</div>	
+			<!--Linking the contact us page to inquire about the rain sensors-->
+			<h3 id="inquire">If you would like to inquire about a Rain Sensor, please see the <a href="page4.html" id="inlineLink"> Contact Us </a>Page</h3><br/>	
+		</div>
+		</body>
+
+</html>
+<script>
+	//makes the text larger and smaller
+	function regular(){
+		document.getElementById("text").style.fontSize="16px";
+	}
+	function large(){
+		document.getElementById("text").style.fontSize="30px";
+	}
+</script>

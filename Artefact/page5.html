@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!--Containing the metadata for the website-->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>AutoHomes</title>
+		<!--Linking the stylesheet and the font to the webpages-->
+		<link rel="stylesheet" href="style.css">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">  
+	</head>
+	<body>
+		<!--Adding in the logo for my website-->
+		<img src="logo.png" width="200px" height="180px" id = "logo" alt="AutoHomes logo">
+		<!--Containes the navigation bar and the title of the webpage-->
+		<div id ="header" style="text-align:center;">
+		    <h1>AutoHomes</h1>
+			<a href="homePage.html">Home Page</a>
+			<a href="page2.html">Monitor Your Device</a>
+			<a href="page3.html">Rain Sensor</a>
+			<a href="page4.html">Contact Us</a>
+			<a href="page5.html">Reviews</a>
+		</div> <br/>
+        <!--Div containing entire webpage to allow for regular and large text-->
+        <div id="text">
+            <!--Allows the text on the webpage to be made larger and smaller for accessability-->
+			<button id="textChange" onclick="regular()">Regular</button>
+			<button id="textChange" onclick="large()">Large</button><br/>
+
+            <h2>Read some reviews for our Rain Sensor:</h2>
+
+            <!-- Slideshow container -->
+            <div class="slideshow-container">
+
+                <!-- Full-width slides/quotes -->
+                <div class="mySlides">
+                <q>The Rain Sensor is an amazing device which can be used to conserve water and help in the fight against climate change.</q>
+                <p class="author">- Greta Thunburg</p>
+                </div>
+            
+                <div class="mySlides">
+                <q>The Rain Sensor has completely changed my life, I cannot remember how I ever lived without it!</q>
+                <p class="author">- Barak Obama</p>
+                </div>
+            
+                <div class="mySlides">
+                <q>The rain sensor has completely automated my irrigation system, making my life so much easier</q>
+                <p class="author">- Leonardo Di Caprio</p>
+                </div>
+            
+                <!-- Next/prev buttons -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+        
+            <!-- Dots/bullets/indicators -->
+            <div class="dot-container">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+        </div>
+        <!--Leave a review-->
+        <img src="review.png" width="220px" id="gif" alt="Smart Homes Image"><br/><br/><br/><br/>
+        <h3>If you would like to leave a review please visit the <a href="page4.html" id="inlineLink"> Contact Us </a>Page</h3>
+        
+    </body>
+</html>
+<script>
+    //starts on the first slide
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    //switches to the next slide
+    function plusSlides(n) {
+    showSlides(slideIndex += n);
+    }
+
+    //selects the slide to be shown
+    function currentSlide(n) {
+    showSlides(slideIndex = n);
+    }
+
+    //allows the slides to be changed
+    function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+        }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    }
+
+    //makes the text larger and smaller
+	function regular(){
+		document.getElementById("text").style.fontSize="16px";
+	}
+	function large(){
+		document.getElementById("text").style.fontSize="30px";
+	}
+</script>

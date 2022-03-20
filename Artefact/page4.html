@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head> 
+		<!--Containing the metadata for the website-->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>AutoHomes</title>
+		<!--Linking the stylesheet and the font to the webpages-->
+		<link rel="stylesheet" href="style.css">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">  
+	</head>
+	<body>
+		<!--Adding in the logo for my website-->
+		<img src="logo.png" width="200px" height="180px" id = "logo" alt="AutoHomes logo">
+		<!--Containes the navigation bar and the title of the webpage-->
+		<div id ="header" style="text-align:center;">
+			<h1>AutoHomes</h1>
+			<a href="homePage.html">Home Page</a>
+			<a href="page2.html">Monitor Your Device</a>
+			<a href="page3.html">Rain Sensor</a>
+			<a href="page4.html">Contact Us</a>
+			<a href="page5.html">Reviews</a>
+		</div> <br/>
+		<!--Div containing entire webpage to allow for regular and laurge text-->
+		<div id="text">
+			<!--Allows the text on the webpage to be made larger and smaller for accessability-->
+			<button id="textChange" onclick="regular()">Regular</button>
+			<button id="textChange" onclick="large()">Large</button>
+			<!--Image and information regarding the contact form-->
+			<p>If you have a query regarding our company or the Rain Sensor device please follow the steps below:</p>
+			<ol>
+				<li>If the query is regarding the Rain-Sensor device please go to the <a href="page3.html" id="inlineLink">Rain Sensor</a> page to find out more</li>
+				<li>If your query is not answered on that page please contact us using the form below</li>
+				<li>If you do not recieve a reply to your query within 48 hours please call us at <strong>(086) 123 4567</strong></li>
+				<li>If you would like to contact us for information about the company please email <strong>contactus@autohomes.ie</strong></li>
+			</ol><br/>
+			<img src="Contact Us.png" width="500px" height="190px" id = "contactUs" alt="Contact Us Image">
+			<!--Contains the form to enter a query-->
+			<div id="form">
+				<form>
+					<!--Enter your name into the form-->
+					<label>Enter Your Full Name:
+						<input type="text" id="name_in" required pattern="[a-zA-Z\s]*$" 
+							title="Please enter letters only" placeholder="Enter Name"> <br/><br/>
+					</label>
+					<!--Enter your email into the form - will be validated-->
+					<label>Enter Your Email address:
+						<input type="email" id="email_in" required 
+							pattern="^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$"
+							placeholder="Enter Email Address"><br/><br/>
+					</label>
+					<!--Enter Your Phone number into the form-->
+					<label>Enter Your Phone Number:
+						<input type="number" id="phone_in" placeholder="Enter Phone Number"><br/><br/>
+					</label>
+					<!--Enter the date into the form-->
+					<label>Enter Todays date:
+						<input type="date" ><br/><br/>
+					</label>
+					<!--Drop down menu to select what your question is-->
+					<label>What is the query about:</label>
+						<select id="queryoptions" name="options" required>
+							<option selected value="" disabled >--- Select your option ---</option>
+							<option value="Fault with a device" id="fault">Fault with a device</option>
+							<option value="Get a quotes for a Sensor" id="quote">Get a quotes for a Sensor</option>
+							<option value="Have a question about a product" id="question">Have a question about a product</option>
+							<option value="Leave a review" id="question">Leave a Review</option>
+						</select></br></br>
+					<!--Checkboxes to choose which sensors your are enquiring about-->
+					<label>What sensor(s) do you wish to enquire about:</label> <br/>
+					<input type="checkbox" id="rainSensor">
+					<label for="rainSensor"> Rain Sensor</label><br/>
+					<input type="checkbox" id="smartLight">
+					<label for="smartLight"> Smart Light</label><br/>
+					<input type="checkbox" id="alarmSystem">
+					<label for="alarmSystem"> Alarm System</label><br/>
+					<input type="checkbox" id="smartFan">
+					<label for="Smart Fan"> Smart Fan</label><br/>
+					<input type="checkbox" id="smartBlinds">
+					<label for="smartBlinds"> Smart Blinds</label><br/><br/>
+					<!--Textbox to enter your question-->
+					<label>Enter Your Comment Here:</label> <br/>
+						<textarea name="comment" id="question"></textarea><br/><br/>
+					<!--Button to submit the form - validates the email-->
+					<button onClick="submit_form()";>
+						Submit Data
+					</button>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	/*This Checks if the form is valid - if it is the form gets submitted and you get a notification,
+	if it is not you get a notifaction saying the form is invalid */
+	//Reads in the data submitted in the form and saves it as variables
+	function submit_form(){
+		var email = document.getElementById("email_in").value;
+		var name = document.getElementById("name_in").value;
+		var phone = document.getElementById("phone_in").value;
+		var select = document.getElementById('queryoptions');
+		var value = select.options[select.selectedIndex].value;
+		var emailreg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+		var namereg = /^[a-zA-Z\s]*$/;
+		
+		//ensures a name is submitted
+		if(name.length == 0) {
+			alert("Name cannot be blank");
+			return false;
+		}
+		//ensures theres are no symbols or numbers in the name
+		else if(namereg.test(name) == false) {
+			alert("Invalid characters in the name");
+			return false;
+		}
+		//ensures the email address has enough letters, an "@" sign and a "."		
+		else if (emailreg.test(email) == false) { 
+			alert("Email address is invalid");	
+			return false;
+		}
+		//ensures you dont leave the dropdown blank
+		else if(value == "") {
+			alert("Please select a Query Option");
+			return false;
+		}
+		//submits the form if it is all valid
+		else {
+			alert("Your form has been submitted");
+		}
+	}
+	//makes the text larger and smaller
+	function regular(){
+		document.getElementById("text").style.fontSize="16px";
+	}
+	function large(){
+		document.getElementById("text").style.fontSize="30px";
+	}
+</script>
+
